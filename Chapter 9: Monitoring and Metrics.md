@@ -15,7 +15,24 @@ You can retrieve, graph, and set alarms on the following statistical values for 
 
 ## Metrics
 
-Be familiar with some common metrics used for monitoring.There are many metrics available, and not all of them are tested on the exam. Some are tested, however, and it is a good idea to know the common ones: VolumeQueueLength, DatabaseConnections, DiskQueueDepth, FreeStorageSpace, ReplicaLag, ReadIOPS, WriteIOS, ReadLatency, WriteLatency, SurgeQueueLength, and SpilloverCount.  DESCRIBE THESE
+Be familiar with some common metrics used for monitoring.There are many metrics available, and not all of them are tested on the exam. Some are tested, however, and it is a good idea to know the common ones 
+
+* VolumeQueueLength - The number of read and write operation requests waiting to be completed in a specified period of time.
+* DatabaseConnections - The number of database connections in use.
+* DiskQueueDepth - The number of outstanding IOs (read/write requests) waiting to access the disk.
+* FreeStorageSpace - The amount of available storage space
+* ReplicaLag - The amount of time a Read Replica DB instance lags behind the source DB instance. Applies to MySQL, MariaDB, and PostgreSQL Read Replicas.
+* ReadIOPS - The average number of disk read I/O operations per second.
+* WriteIOS - The average number of disk write I/O operations per second.
+* ReadLatency - The average amount of time taken per disk I/O operation.
+* WriteLatency - The average amount of time taken per disk I/O operation.
+* SurgeQueueLength - The total number of requests (HTTP listener) or connections (TCP listener) that are pending routing to a healthy instance. The maximum size of the queue is 1,024. Additional requests or connections are rejected when the queue is full. 
+* SpilloverCount - 	The total number of requests that were rejected because the surge queue is full.  [HTTP listener] The load balancer returns an HTTP 503 error code.  [TCP listener] The load balancer closes the connection.
+* CPUUtilization or Latency to determine if a web server running on an Amazon Elastic Compute Cloud (Amazon EC2) instance is under provisioned?
+* Queue Depth (ApproximateNumberOfMessagesVisible) or (ApproximateAgeOfOldestMessage) to monitor whether an Amazon Simple Queue Service (Amazon SQS) worker running on an Amazon Elastic Compute Cloud (Amazon EC2) instance was under-provisioned
+* Latency or HealthyHostCount used for monitoring to determine if a Classic Elastic Load Balancing load balancer was underperforming
+
+AWS Trusted Advisor helps identify underperforming or underutilized resources
 
 
 ## Custom Metrics and Events
