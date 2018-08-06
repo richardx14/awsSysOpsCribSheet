@@ -75,14 +75,6 @@ The action can be an Amazon EC2 action, an Auto Scaling action, or a notificatio
 Degraded and Severely Degraded performance means that the EBS Volume Status Check is in a Warning state and there is some I/ O. Stalled or Not Available means that the EBS Volume is in the Impaired state, and there is no I/ O.
 
 
-## Variations
-
-By default, basic monitoring is enabled when you create a launch configuration using the AWS Management Console, and detailed monitoring is enabled when you create a launch configuration using the AWS CLI or an API.
-
-Amazon Route 53 sends metrics to CloudWatch. CloudWatch provides detailed monitoring of Amazon Route 53 by default. Amazon Route 53 sends one-minute metrics to CloudWatch.
-
-Amazon Relational Database Service sends metrics to CloudWatch for each active database instance every minute. Detailed monitoring is enabled by default.
-
 ## Logs, Filters, Dashboards
 
 CloudWatch Logs can ingest, aggregate and monitor any text based common log data or JSON-formatted logs.
@@ -107,6 +99,15 @@ Basic
 Detailed
 
 * Data is available in 1-minute periods for an additional cost. To get this level of data, you must specifically enable it for the instance. For the instances where you've enabled detailed monitoring, you can also get aggregated data across groups of similar instances.
+
+By default, basic monitoring is enabled when you create a launch configuration using the AWS Management Console, and detailed monitoring is enabled when you create a launch configuration using the AWS CLI or an API.
+
+Amazon Route 53 sends metrics to CloudWatch. CloudWatch provides detailed monitoring of Amazon Route 53 by default. Amazon Route 53 sends one-minute metrics to CloudWatch.
+
+Amazon Relational Database Service sends metrics to CloudWatch for each active database instance every minute. Detailed monitoring is enabled by default.
+
+Auto-scaling - basic by default.
+
 
 ## put-metrics
 
