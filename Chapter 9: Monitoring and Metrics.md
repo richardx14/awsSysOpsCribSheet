@@ -64,6 +64,7 @@ By default, basic monitoring is enabled when you create a launch configuration u
 
 Amazon Route 53 sends metrics to CloudWatch. CloudWatch provides detailed monitoring of Amazon Route 53 by default. Amazon Route 53 sends one-minute metrics to CloudWatch.
 
+Amazon Relational Database Service sends metrics to CloudWatch for each active database instance every minute. Detailed monitoring is enabled by default.
 
 ## Logs, Filters, Dashboards
 
