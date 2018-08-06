@@ -81,6 +81,15 @@ FreeStorageSpace monitors the amount of available storage space for a DB instanc
 
 When the SurgeQueueLength is exceeded, spillover occurs. Requests are dropped without notifying end users. Customer experience is negatively impacted.
 
+## Basic vs Detailed Monitoring
+
+Basic
+
+* Data is available automatically in 5-minute periods at no charge.
+
+Detailed
+
+* Data is available in 1-minute periods for an additional cost. To get this level of data, you must specifically enable it for the instance. For the instances where you've enabled detailed monitoring, you can also get aggregated data across groups of similar instances.
 
 ## put-metrics
 
