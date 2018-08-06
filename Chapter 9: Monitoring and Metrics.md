@@ -20,7 +20,7 @@ Be familiar with some common metrics used for monitoring.There are many metrics 
 
 ## Custom Metrics and Events
 
-* A custom metric can be one of the following:
+A custom metric can be one of the following:
 * Standard resolution, with data having one-minute granularity
 * High resolution, with data at a granularity of one second
 
