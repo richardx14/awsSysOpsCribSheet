@@ -1,0 +1,149 @@
+## Groups
+
+* Groups cannot belong to other groups.
+
+## Policies
+
+Three required sections of an AWS Identity and Access Management (IAM) policy - Effect, Action, and Resource (“EAR”)
+
+For inline policies: You can add as many inline policies as you want to a user, role, or group, but the total aggregate policy size (the sum size of all inline policies) per entity cannot exceed the following limits:
+* User policy size cannot exceed 2,048 characters.
+* Role policy size cannot exceed 10,240 characters.
+* Group policy size cannot exceed 5,120 characters.
+
+For managed policies: You can add up to 10 managed policies to a user, role, or group. The size of each managed policy cannot exceed 6,144 characters.
+
+Managed policies can only be attached to IAM users, groups, or roles.
+
+
+## Roles and Trust Policies
+
+A trust policy is needed to allow the IAM user to assume the role. The role is created that identifies the trust policy that applies to the role. An IAM policy is attached to a role, defining the actions that the IAM user is allowed to perform when they have assumed the IAM role.
+
+## Roles
+
+An IAM role is an IAM entity that defines a set of permissions for making AWS service requests. IAM roles are not associated with a specific user or group. Instead, trusted entities assume roles, such as IAM users, applications, or AWS services such as EC2
+
+You create a role in a way similar to how you create a user—name the role and attach a policy to it
+
+You assume an IAM role by calling the AWS Security Token Service (STS) AssumeRole APIs 
+
+Roles cannot be added to a group
+
+You are limited to 1,000 IAM roles under your AWS account. If you need more roles, submit the IAM limit increase request form with your use case, and we will consider your request.
+
+IAM roles for EC2 instances enables your applications running on EC2 to make requests to AWS services such as Amazon S3, Amazon SQS, and Amazon SNS without you having to copy AWS access keys to every instanc
+
+Can I change the IAM role on a running EC2 instance?
+Yes. Although a role is usually assigned to an EC2 instance when you launch it, a role can also be assigned to an EC2 instance that is already running. To learn how to assign a role to a running instance, see IAM Roles for Amazon EC2. You can also change the permissions on the IAM role associated with a running instance, and the updated permissions take effect almost immediately. 
+
+You can add an IAM role as an additional parameter in an Auto Scaling launch configuration and create an Auto Scaling group with that launch configuration.
+
+You can only associate one IAM role with an EC2 instance at this time.
+
+The AWS temporary security credentials associated with an IAM role are automatically rotated multiple times a day
+
+A service-linked role is a type of role that links to an AWS service (also known as a linked service) such that only the linked service can assume the role.
+
+
+## S3
+
+A bucket policy can be set to force encryption on future objects being uploaded.
+
+You enforce encryption upon newly uploaded objects by creating a bucket policy to deny upload of objects that do not include a header requesting server-side encryption.
+
+
+With IAM policies, you can only grant users in your own AWS account permission to access your Amazon S3 resources.
+
+With ACLs, you can only grant other AWS accounts (not specific users) access to your Amazon S3 resources.
+
+Bucket policies in Amazon S3 can be used to add or deny permissions across some or all of the objects in a single bucket. Policies can be attached to users, groups, or Amazon S3 buckets, enabling centralized management of permissions. With bucket policies, you can grant users in your AWS account or other AWS accounts access to your Amazon S3 resources.
+
+With Amazon S3 SSE, you can encrypt data on upload simply by adding an additional request header when writing the object.
+
+Amazon S3 SSE uses one of the strongest block ciphers available: AES-256.
+
+You can create and apply bucket policies that require that only encrypted data can be uploaded to your buckets.
+
+With the Cross-Origin Resource Sharing (CORS) policy enabled, assets such as web fonts and images stored in an Amazon S3 bucket can be safely referenced by external web pages, style sheets, and HTML5 applications.
+
+
+## Groups, Structures
+
+Like LDAP - You can organize users and groups under paths, similar to object paths in Amazon S3—for example /mycompany/division/project/Joe.
+
+IAM users can have any combination of credentials that AWS supports, such as an AWS access key, X.509 certificate, SSH key, password for web app logins, or an MFA device.
+
+## IAM Users, Credentials
+
+Users are global entities, like an AWS account is today. No region is required to be specified when you define user permissions. Users can use AWS services in any geographic region.
+
+All limits are on the AWS account as a whole, not on IAM users.
+
+You can enforce strong passwords by requiring minimum length or at least one number. You can also enforce automatic password expiration, prevent re-use of old passwords, and require a password reset upon the next AWS sign-in
+
+
+## Encryption
+
+Amazon EC2 uses public-key cryptography to encrypt and decrypt login information.
+
+All service endpoints support encryption of data in transit via HTTPS.
+
+The following services offer a feature to encrypt data at rest: Amazon S3 Amazon EBS Amazon EMR AWS Snowball Amazon Glacier AWS Storage Gateway Amazon RDS Amazon Redshift Amazon WorkSpaces
+
+To protect data at rest in Amazon DynamoDB, customers should use client-side encryption. Amazon DynamoDB does not provide server-side encryption to protect the data at rest.
+
+Amazon Simple Queue Service (Amazon SQS) encrypts data at rest and Amazon Simple Notification Service (Amazon SNS) doesn't encrypt data at rest.
+
+
+## NACL and Security Groups
+
+Security group feature provides protocol and port security at the interface level
+
+Security groups Amazon Virtual Private Cloud (Amazon VPC) security control is stateful?
+
+Network Access Control Lists (ACLs) security control allows explicit DENY of a port or protocol?
+
+Network Access Control Lists (ACLs) security control is completely unrestricted by default?
+
+
+## Credentials
+
+To help you determine which permissions are needed, the IAM console now displays service last accessed data 
+
+IAM users and federated users can access resources in another AWS account via the AWS Management Console, the AWS CLI, or the APIs
+
+STS - Temporary security credentials consist of the AWS access key ID, secret access key, and security token. Temporary security credentials are valid for a specified duration and for a specific set of permissions. Temporary security credentials are sometimes simply referred to as tokens. Tokens can be requested for IAM users or for federated users you manage in your own corporate directory
+
+AWS Identity and Access Management (IAM) supports identity federation for delegated access to the AWS Management Console or AWS APIs. With identity federation, external identities are granted secure access to resources in your AWS account without having to create IAM users. These external identities can come from your corporate identity provider (such as Microsoft Active Directory or from the AWS Directory Service) or from a web identity provider (such as Amazon Cognito, Login with Amazon, Facebook, Google, or any OpenID Connect-compatible provider).
+
+The IAM access key can be placed in: Linux: ~/. aws/ credentials file Windows: \% USERPROFILE%\. awscredentials
+
+Credentials include: Passwords AWS root account or IAM user account login to the AWS Management Console MFA Access keys Digitally signed requests to AWS APIs (using the AWS SDK, AWS CLI, or REST/ Query APIs)
+
+IAM can be used to set a password policy that requires at least one lowercase letter and at least one non-alphanumeric character.
+
+Keys are protected by access control policies that are defined and managed by you. All API requests to AWS KMS must be made using TLS. No single Amazon employee can gain access to Customer Managed Keys (CMKs). There is no mechanism to export CMKs into plaintext. Key usage is isolated to a defined AWS Region. Keys held by KMS in one region cannot be used in another region.
+
+
+## STS, Identity Federation
+
+Identity federation is the term for when AWS Management Console access is granted based on first signing in to Facebook or Google?
+
+AWS STS grants temporary access to AWS resources for anywhere from 15 minutes to 36 hours?
+
+12 hours is the default time expiration for AWS Secure Token Service (AWS STS)?
+
+
+## AWS Inspector
+
+Amazon Inspector automatically assesses applications for vulnerabilities or deviations from best practices, such as checking for a remote root login being enabled or installation of vulnerable software versions?
+
+Amazon Inspector cannot run without tagging resources.
+
+Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications and operating systems deployed on EC2 instances. AWS Trusted Advisor compares how AWS services are being used in your account against the Cost Optimization, Performance Efficiency, Security, and Reliability pillars of the Well Architected Framework.
+
+Amazon Inspector is an automated security assessment service that helps you test the security state of your applications running on Amazon EC2.
+
+Amazon Inspector allows you to automate security vulnerability assessments throughout your development and deployment pipeline or against static production systems. This allows you to make security testing a more regular occurrence as part of development and IT operations. Amazon Inspector is agent-based, API-driven, and delivered as a service to make it easy to deploy, manage, and automate.
+
